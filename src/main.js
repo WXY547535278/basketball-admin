@@ -26,7 +26,6 @@ import 'quill/dist/quill.bubble.css'
 Vue.use(VueQuillEditor)
     // set ElementUI lang to EN
 Vue.use(ElementUI, { locale })
-
 Vue.config.productionTip = false
 
 new Vue({

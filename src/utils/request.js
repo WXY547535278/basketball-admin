@@ -3,7 +3,7 @@ import { Message } from 'element-ui'
 import store from '@/store'
 import { getToken } from '@/utils/auth'
 
-const base_url = 'http://cloud.weiwochina.com/basketball/'
+const base_url = 'api/basketball/'
 // create an axios instance
 const service = axios.create({
   baseURL: base_url, // url = base url + request url

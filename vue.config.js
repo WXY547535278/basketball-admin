@@ -18,13 +18,13 @@ const port = process.env.port || process.env.npm_config_port || 9528 // dev port
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
   /**
-   * You will need to set publicPath if you plan to deploy your site under a sub path,
-   * for example GitHub Pages. If you plan to deploy your site to https://foo.github.io/bar/,
-   * then publicPath should be set to "/bar/".
-   * In most cases please use '/' !!!
-   * Detail: https://cli.vuejs.org/config/#publicpath
-   */
-  publicPath: '/',
+     * You will need to set publicPath if you plan to deploy your site under a sub path,
+     * for example GitHub Pages. If you plan to deploy your site to https://foo.github.io/bar/,
+     * then publicPath should be set to "/bar/".
+     * In most cases please use '/' !!!
+     * Detail: https://cli.vuejs.org/config/#publicpath
+     */
+  publicPath: './',
   outputDir: 'dist',
   assetsDir: 'static',
   lintOnSave: process.env.NODE_ENV === 'development',
@@ -39,13 +39,20 @@ module.exports = {
     proxy: {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
-      [process.env.VUE_APP_BASE_API]: {
-        target: `http://127.0.0.1:${port}/mock`,
-        changeOrigin: true,
+      '/api': {
+        target: 'https://ball.lxruv.com', // 目标接口域名
+        changeOrigin: true, // 是否跨域
         pathRewrite: {
-          ['^' + process.env.VUE_APP_BASE_API]: ''
+          '^/api': '/' // 重写接口
         }
       }
+      // [process.env.VUE_APP_BASE_API]: {
+      //   target: `http://127.0.0.1:${port}/mock`,
+      //   changeOrigin: true,
+      //   pathRewrite: {
+      //     ['^' + process.env.VUE_APP_BASE_API]: ''
+      //   }
+      // }
     },
     after: require('./mock/mock-server.js')
   },
@@ -104,7 +111,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()

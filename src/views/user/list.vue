@@ -24,6 +24,9 @@
 
     <el-table :data="tableData" v-loading="loading">
       <!-- 用户信息 -->
+      <el-table-column prop="openid"
+                       label="openid"
+                       width="200"></el-table-column>
       <el-table-column prop="name"
                        label="姓名"
                        width="200"></el-table-column>
@@ -93,7 +96,7 @@
               更多操作<i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native.prevent="showSendMsg(scope.row.id,scope.row.phone)">发送短信</el-dropdown-item>
+              <!-- <el-dropdown-item @click.native.prevent="showSendMsg(scope.row.id,scope.row.phone)">发送短信</el-dropdown-item> -->
               <el-dropdown-item @click.native.prevent="deleteThis(scope.row.id,1)">删除用户</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -113,7 +116,7 @@
       </el-pagination>
     </div>
     <!-- 发送短信 -->
-    <el-dialog title="发送短信"
+    <!-- <el-dialog title="发送短信"
                :visible.sync="showView1"
                width="50%"
                >
@@ -129,15 +132,12 @@
                      @click="sendMsg()">发送</el-button>
         </el-form-item>
       </el-form>
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
 <script>
 import { getUserList, delUser, putUser, sendMsgToOne } from "@/api/user"
-import { getAddressList, getAddressById } from "@/api/address"
-import { getdragDownList } from "@/api/dragDown"
-import { getUserTeam } from "@/api/team"
 import { parseTime } from "@/utils/index"
 
 export default {

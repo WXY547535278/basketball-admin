@@ -41,13 +41,13 @@
       <!-- 球队信息 -->
       <el-table-column prop="name"
                        label="球队名"
-                       width="150"></el-table-column>
+                       width="auto"></el-table-column>
       <el-table-column prop="phone"
                        label="球队联系电话"
-                       width="150"></el-table-column>
+                       width="auto"></el-table-column>
       <el-table-column prop="number"
                        label="成员数量"
-                       width="150"></el-table-column>
+                       width="auto"></el-table-column>
       <el-table-column label="球队logo"
                        width="150">
         <template slot-scope="scope"><img v-image-preview
@@ -57,13 +57,13 @@
       </el-table-column>
       <el-table-column prop="status"
                        label="申请状态"
-                       width="150"></el-table-column>
+                       width="auto"></el-table-column>
       <el-table-column prop="introduction"
                        label="球队简介"
-                       width="150"></el-table-column>
+                       width="auto"></el-table-column>
       <el-table-column fixed="right"
                        label="操作"
-                       width="120">
+                       width="auto">
         <template slot-scope="scope">
           <el-dropdown>
             <el-button type="primary">
@@ -72,7 +72,7 @@
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item @click.native.prevent="showTeamDetail(scope.row.id)">查看球员</el-dropdown-item>
               <el-dropdown-item @click.native.prevent="putTeamStatus(scope.row.id)">审核</el-dropdown-item>
-              <el-dropdown-item @click.native.prevent="deleteThis(scope.row.id)">删除</el-dropdown-item>
+              <el-dropdown-item @click.native.prevent="deleteThis(scope.row.id)">解散球队</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </template>
